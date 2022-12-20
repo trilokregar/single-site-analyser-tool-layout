@@ -1,0 +1,114 @@
+/* Landing-page-title */
+.bg-lightorange {
+    background-color: #ea92227a;
+}
+
+/* Header */
+.landing-page-header {
+    text-shadow: 3px 3px #c7bbbb;
+    font-weight: 800;
+    letter-spacing: 2px;
+    font-size: 57px;
+    width: 100%;
+}
+
+/* sub-header */
+.landing-page-sub-header {
+    font-weight: 800;
+    letter-spacing: 2px;
+    font-size: 37px;
+    width: 100%;
+}
+
+.map-action-inputs {
+    z-index: 500;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+}
+
+.map-action-tabs {
+    z-index: 500;
+    position: absolute;
+    top: 90px;
+    left: 25px;
+    width: 90px;
+}
+
+.map-action-generate-report {
+    z-index: 500;
+    position: absolute;
+    bottom: 28px;
+    right: 65px;
+}
+
+.map-tab {
+    cursor: pointer;
+    font-size: 12px;
+    height: 80px;
+    line-height: 15px;
+    padding: 10px;
+    text-align: center;
+}
+
+.fa-size {
+    font-size: 17px !important;
+}
+
+.search-icon {
+    position: absolute;
+    top: 8px;
+    left: 14px;
+    font-size: 20px !important;
+}
+
+.autocomplete-clear {
+    position: absolute;
+    right: 7px;
+    top: 7px;
+}
+
+.radius-dropdown-btn {
+    border: 0;
+    background-color: #ffffff;
+    font-size: 1rem;
+    padding: 0;
+}
+
+.sample-report-pdf {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.bg-lightgray {
+    background-color: #adb5bd;
+}
+
+.dropdown-menu-width {
+    min-width: 4rem !important;
+}
+
+.heading-height {
+    height: 22vh;
+}
+
+.map-height {
+    height: 60vh;
+}
+
+.carousel-height {
+    height: 16vh;
+}
+
+.modal-body-edit {
+    padding: 20px 120px;
+}
+
+.checkbox-size {
+    width: 18px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}

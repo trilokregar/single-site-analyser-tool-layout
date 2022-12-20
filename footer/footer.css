@@ -1,0 +1,10 @@
+.footer-section {
+  background-color: #545454;
+  font-family: "Jost", sans-serif;
+  height: 100%;
+}
+
+.footer-section .btn {
+  background-color: #ffbf4c;
+  font-size: 12px;
+}

@@ -1,0 +1,31 @@
+.meet-the-team {
+  background-color: #f5bb4d;
+  font-family: "Jost", sans-serif;
+  height: 100%;
+  padding: 2%;
+}
+
+.meet-the-team.title {
+  font-weight: 600;
+}
+
+.meet-the-team .text {
+  font-size: 22px;
+}
+.sub-title {
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.meet-the-team-img {
+  height: 500px;
+  object-fit: cover;
+  border-radius: 50px;
+}
+
+@media (max-width: 600px) {
+  .meet-the-team-img {
+    height: 260px;
+    border-radius: 45px;
+  }
+}

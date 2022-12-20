@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+
+    <!-- Css -->
+    <link rel="stylesheet" href="./CovidImpressionsMethodology.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Covid Impressions Methodology</title>
+  </head>
+  <body>
+        <div class="page-content container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="panel m-4">
+                <div class="panel-heading py-3 px-4">
+                  <h6 class="page-title">AdMAVIN - Covid Impressions Methodology</h6>
+                </div>
+                <hr class="my-0">
+                <div class="container-fluid p-4">
+                  <h4>Problem Statement-</h4>
+                  <div class="row mb-3">
+                    <div class="col-md-4 text-center">
+                      <div class="img-cont">
+                        <img src="../assets/case-study/covid-impressions/primary-image-new.png" class="img-bordered p-2" alt="john-jacob-logo">
+                      </div>
+                    </div>
+                    <div class="col-md-8 text-justify">
+                      <p>
+                        During lockdown, Out of Home advertisement suffered the most as movement of people (User Mobility) became nil. Even after the lockdown, people preferred to stay at home and user mobility couldn’t move to pre pandemic level for quite a long period of time.
+                      </p>
+                      <p>
+                        Brands using OOH Advertisement wanted to understand the impact of Covid on daily mobility and thus average mobile impressions. <a href="https://www.madisonindia.com/">Madison</a>, a renowned media agency reached out to its tech partner- <a href="https://www.admavin.com">AdMAVIN</a> with this problem statement. <a href="https://www.admavin.com">AdMAVIN</a> team had to develop an algorithm and tool to measure the change in impression numbers or mobility due to Covid.
+                      </p>
+                    </div>
+                  </div>
+    
+                  <div class="row mb-3">
+                    <div class="col-md-12 text-justify">
+                      <h4>Google Mobility Report- Reference to Solve this Problem</h4>
+                      <div class="row mb-3">
+                        <div class="col-md-4">
+                          <div class="img-cont">
+                            <img src="../assets/case-study/covid-impressions/covid-mobility-report.png" class="img-bordered p-2" alt="john-jacob-logo">
+                          </div>
+                        </div>
+                        <div class="col-md-8">
+                          <p>AdMAVIN developed an algorithm based on <a href="https://www.google.com/covid19/mobility/">Google Mobility Report</a> which presents mobility trends in several categories. Such trends are analyzed on a monthly basis as shown in the image.</p>
+                          <p>Here Google suggests changes in footfall of several points of interests for example, public transport, workplace and residential places among many others. It doesn’t directly solve the problem of the OOH industry. Industry wanted to know more about change in mobility which pertains to routes taken by users as most of the billboards, unipoles, bus shelters etc. are placed along the routes. But Google Mobility report helped AdMAVIN to formulate methodology for impact of covid on OOH impression numbers.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+    
+                  <div class="row mb-3">
+                    <div class="col-md-12 text-justify">
+                      <h4>How AdMAVIN formulated the methodology using Google Mobility Report</h4>
+                      <div class="row mb-3">
+                        <div class="col-md-4">
+                          <div class="img-cont">
+                            <img src="../assets/case-study/covid-impressions/moving-covid-mobility-report.gif" class="img-bordered p-2" alt="john-jacob-logo">
+                          </div>
+                        </div>
+                        <div class="col-md-8">
+                          <p>Mobility information of the user is directly related to POI data. If someone travels from a residential society to a nearby school to drop off his/her ward, we can very well understand the route that he/she must have taken for the trip. Thus POI data can also give us route data. Any change in footfall of POI can very much be related to footfall of the audience on roads and thus also tells us about change in impression numbers for OOH Advertisements.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-md-12 text-justify">
+                      <h4>The Challenges</h4>
+                      <p>
+                        A perimeter of radius 1000 meters around the road’s coordinates is used to understand the locality by analyzing the Points of Interest (POI) present in it.
+                      </p>
+                      <p class="mb-0">The current MAVIN classification of POIs is as follows:</p>
+                      <ul>
+                        <li>Sustenance</li>
+                        <li>Education</li>
+                        <li>Transportation</li>
+                        <li>Entertainment</li>
+                        <li>Residential</li>
+                        <li>Commercial</li>
+                        <li>Industrial</li>
+                      </ul>
+                      <p>These MAVIN POI Classification is mapped with Google's place categories (from the Mobility Report), to map the classification wise change percentage.</p>
+                      <p>As a given location contains various kinds of POIs, we estimate the change_pecentage calculating the weighted average of the change percentage of these respective categories.
+                        An example calculation is provided in the <a href="#">example section.</a></p>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-md-12 text-justify">
+                      <h4>Key Notes / Observations:</h4>
+                      <ul>
+                        <li>The change percentages of Google Report are not Traffic Change percentages. They are the avg. change in people observed in a given Point of Interest.</li>
+                        <li>Even though the residential areas have a +ve change in mobility, the overall traffic change can still be -ve in residential areas due the drop in the other Points of Interest (Shops, restaurants, etc.) in that locality.</li>
+                        <li>As the Google report provides the day-wise change_percentages since Feb 15th 2020, the OTS can also be measured day wise since Feb 15th till date.
+                          <p class="mt-2 mb-1">Image below shows the day-wise change_percentage of OTS</p>
+                          <div class="col-md-12">
+                            <div class="img-cont">
+                              <img src="../assets/case-study/covid-impressions/day-wise-change-covid-ots.png" class="img-bordered p-2" alt="john-jacob-logo">
+                            </div>
+                          </div>
+                        </li>
+                        <li>Google mobility reports are released with a delay of 4 days to one week. Hence the OTS can be measured for any day up until a week before from today.</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-md-12 text-justify">
+                      <h4>Example OTS Calculation for COVID19 times:</h4>
+                      <p class="mb-0">
+                        <b>Location:</b>
+                        <i>Wadern Road St.Stephen Church, South Mumbai</i>
+                      </p>
+                      <p class="mb-0">
+                        <b>Lat, Long:</b>
+                        <i>18.964521, 72.804455</i>
+                      </p>
+                      <p>Media is assumed to be - <b>"LIT"</b></p>
+
+                      <p class="mb-0">For this Locality, the change percentages as per Google Mobility Report on -<b>14th June</b></p>
+                      <ul>
+                        <li>Grocery & pharmacy : -25.0%</li>
+                        <li>Retail & recreation  : - 72.0%</li>
+                        <li>Parks : - 70.0%</li>
+                        <li>Transit stations : - 52.0%</li>
+                        <li>Residential : 16.0%</li>
+                        <li>Workplaces : -24.0%</li>
+                      </ul>
+
+                      <p class="mb-0">MAVIN POI distribution (share of various POIs) within 1000mts radius for this Locality</p>
+                      <ul>
+                        <li>Commercial : 9.0%</li>
+                        <li>Education : 1.0%</li>
+                        <li>Residential : 15.0%</li>
+                        <li>Sustenance : 65.0%</li>
+                        <li>Transportation : 8.0%</li>
+                      </ul>
+                      <p>Post the Mapping of mobility changes to MAVIN classification, the traffic change_percent calculated using the Weighted Average method :  <b>-52.19 %</b></p>
+                      <p>As the OTS changes daily and can be estimated for any date between Mar 15th till date, find below the OTS data for several dates.</p>
+                      <div class="col-md-12">
+                        <div class="img-cont">
+                          <img src="../assets/case-study/covid-impressions/ots-change-table.png" class="img-bordered p-2" alt="john-jacob-logo">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </body>
+</html>

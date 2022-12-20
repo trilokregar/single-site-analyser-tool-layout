@@ -1,0 +1,106 @@
+body {
+  background: #0db59b;
+}
+
+.why-admavin.container-fluid {
+  padding: 2%;
+}
+.icon {
+  width: 50px;
+}
+
+.card-body {
+  height: 250px;
+  background-color: #fde600;
+}
+
+.card-title {
+  font-family: "Jost", sans-serif;
+  color: #3f6b9e;
+  font-weight: 500;
+  font-size: 26px;
+}
+
+.card-text {
+  font-family: "Jost", sans-serif;
+  font-size: 19px;
+  color: #3f6b9e;
+}
+
+.girl-image {
+  width: 80px;
+  left: -75px;
+  top: -90px;
+}
+
+.why-admavin .btn {
+  background-color: #ffbf4c;
+  font-size: 12px;
+}
+
+.madison-img {
+  width: 120px;
+}
+
+.starbucks-img {
+  width: 90px;
+}
+
+.snapdeal-img {
+  height: 70px;
+  object-fit: cover;
+  width: 85px;
+}
+
+.amazon-img {
+  width: 120px;
+}
+
+.rapport-img {
+  width: 85px;
+}
+
+.hindustan-unilever-img {
+  width: 110px;
+}
+
+.bmw-img {
+  width: 50px;
+}
+
+.zomato-img {
+  width: 50px;
+}
+
+@media (max-width: 450px) {
+  .choose-admavin-section {
+    margin-top: 0px !important;
+  }
+  .girl-image {
+    display: none;
+  }
+}
+
+/* Animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-220px * 8));
+  }
+}
+.slider {
+  overflow: hidden;
+}
+
+.slider .slide-track {
+  animation: scroll 25s linear infinite;
+  display: flex;
+  align-items: center;
+  width: calc(220px * 16);
+  height: 50px;
+}
+.slider .slide {
+  width: 220px;
+}

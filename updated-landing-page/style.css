@@ -1,0 +1,810 @@
+/*-------------------------------------- MAVIN - Home ---------------------------------*/
+/*-----------------All--------------*/
+.font {
+	font-family: "Jost", sans-serif;
+}
+
+.h-100px {
+	max-height: 200px;
+	height: 70px;
+}
+
+a:hover {
+	text-decoration: none !important;
+}
+
+.text-truncate-2 {
+	-webkit-line-clamp: 2;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+/* Animation */
+.madison-img {
+	width: 180px;
+}
+
+.starbucks-img {
+	width: 170px;
+}
+
+.snapdeal-img {
+	height: 80px;
+	object-fit: cover;
+	width: 140px;
+}
+
+.amazon-img {
+	width: 180px;
+}
+
+.rapport-img {
+	width: 120px;
+}
+
+.hindustan-unilever-img {
+	width: 170px;
+}
+
+.bmw-img {
+	width: 100px;
+}
+
+.zomato-img {
+	width: 110px;
+}
+
+.carousel {
+	width: 100%;
+	height: 150px;
+	position: absoulte;
+}
+
+@keyframes scroll { 
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(calc(-220px* 8));
+	}
+}
+
+.slider {
+	overflow: hidden;
+}
+
+.slider .slide-track {
+	animation: scroll 25s linear infinite;
+	display: flex;
+	align-items: center;
+	width: calc(220px * 16);
+	height: 100px;
+}
+
+.slider .slide {
+	width: 220px;
+}
+
+@media ( max-width : 600px) {
+	.admavin-logo {
+		width: 150px;
+	}
+	.tell-me-more-btn {
+		width: 155px;
+		top: 60px;
+	}
+	.title {
+		font-size: 30px;
+	}
+}
+
+/*-----------------------------------------landing page-------------------------------------------*/
+.header {
+	display: flex;
+	height: 100vh;
+	align-items: center;
+	justify-content: center;
+	text-shadow: 3px 2px #b8b8b8;
+}
+
+.scroll {
+	position: absolute;
+	bottom: 0;
+}
+
+.bg-img {
+	background-image: url('../assets/landing-page/background.jpg');
+	height: 100vh;
+}
+
+.admavin-logo-home {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	max-width: 200px;
+	width: 100%;
+}
+
+.tell-me-more-btn {
+	position: absolute;
+	top: 80px;
+	right: 5px;
+	background-color: #ffbf4c;
+	font-size: 15px;
+	max-width: 200px;
+	width: 100%;
+}
+
+.title {
+	font-weight: 800;
+	letter-spacing: 2px;
+	text-align: center;
+	font-size: 55px;
+	background-color: #ea92227a;
+	width: 100%;
+	height: 100px;
+}
+
+/*-- Offerings-----*/
+#offerings {
+	padding: 50px 30px;
+	background: #03989e;
+}
+
+.offering-page-img {
+	height: 550px;
+	width: 100%;
+	background-repeat: no-repeat;
+	object-fit: cover;
+}
+
+.admavin-logo {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	position: absolute;
+	top: 0px;
+	right: 30px;
+}
+
+.beta-version-img {
+	position: absolute;
+	top: 90px;
+	right: 30px;
+	transform: rotate(-25deg);
+	width: 125px;
+	filter: brightness(16);
+}
+
+.fa-arrow-right {
+	transform: rotate(-90deg);
+	width: 50px;
+}
+
+.schedule-demo-text {
+	position: absolute;
+	font-weight: 600;
+	z-index: 2;
+}
+
+.schedule-demo .arrow {
+	width: 100%;
+	height: 50px;
+	background-color: orange;
+	position: absolute;
+	overflow: hidden;
+	top: 0px;
+	z-index: 1;
+}
+
+.schedule-demo .offering-btn {
+	overflow: hidden;
+	width: 200px;
+	height: 50px;
+	width: 200px;
+	border-radius: 0;
+}
+
+.schedule-demo .demo-cont {
+	overflow: hidden;
+	height: 50px;
+	width: 200px;
+	background-color: #f0701e;
+}
+
+/* arrow ribbon animation */
+.arrow {
+	animation: mymove 1500ms infinite;
+}
+
+.schedule-demo .arrow:after {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 0;
+	height: 0;
+	border-left: 25px solid #f0701e;
+	border-top: 25px solid transparent;
+	border-bottom: 25px solid transparent;
+}
+
+.schedule-demo .arrow:before {
+	content: "";
+	position: absolute;
+	right: 0;
+	width: 0;
+	height: 0;
+	border-top: 25px solid #f0701e;
+	border-left: 25px solid transparent;
+	border-bottom: 25px solid #f0701e;
+}
+
+@keyframes mymove {
+	from { 
+		left:-300px;
+	}
+	to {
+		left: 360px;
+	}
+}
+
+.why-admavin-image {
+	position: absolute;
+	bottom: 3px;
+	left: 0px;
+	width: 260px;
+	z-index: 3;
+}
+
+.why-admavin-text {
+	position: absolute;
+	bottom: 0px;
+	left: 62px;
+	z-index: 4;
+}
+
+.question-mark {
+	position: absolute;
+	animation: wave-animation 2500ms infinite;
+}
+
+@keyframes wave-animation { 
+	0% {
+		transform: rotate(-10deg);
+	}
+	50% {
+		transform: rotate(10deg);
+	}
+	100% {
+		transform: rotate(-10deg);
+	}
+}
+
+.question-mark.one {
+	left: 50px;
+	bottom: 60px;
+	width: 70px;
+}
+
+.question-mark.two {
+	left: 160px;
+	bottom: 60px;
+	width: 65px;
+}
+
+.question-mark.three {
+	left: 150px;
+	bottom: 120px;
+	width: 50px;
+}
+
+.question-mark.four {
+	left: 110px;
+	bottom: 170px;
+	width: 40px;
+}
+
+.question-mark.five {
+	left: 85px;
+	bottom: 145px;
+	width: 40px;
+}
+
+/*-------------case studies-------------------*/
+.case-study-section {
+	padding: 2%;
+	padding-top: 100px;
+	padding-bottom: 200px;
+	background: #03989e;
+}
+
+.case-study-image {
+	max-width: auto;
+	width: 100%;
+	height: 400px;
+}
+
+.case-study-text {
+	font-size: 18px;
+}
+
+.fa-arrow-right {
+	transform: rotate(-90deg);
+	width: 50px;
+}
+
+/*-------------news-------------------*/
+.news-section {
+	padding: 2%;
+	background: #03989e;
+}
+
+.news-image {
+	max-width: auto;
+	width: 100%;
+	height: 400px;
+}
+
+.news-title {
+	font-weight: 500;
+}
+
+.news-text {
+	font-size: 18px;
+}
+
+.fa-arrow-right {
+	transform: rotate(-90deg);
+	width: 50px;
+}
+/*-------------whyAdmavin-------------------*/
+.why-admavin.container-fluid {
+	background: #03989e;
+	padding: 2%;
+	padding-top: 4%;
+}
+
+.why-admavin-anim {
+	height: 100vh;
+}
+
+.why-anim {
+	bottom: 0;
+}
+
+.icon {
+	width: 50px;
+	height: 50px;
+}
+.robust-icon {
+	width: 50px;
+	height: 65px;
+}
+
+.card-body {
+	height: 250px;
+	background-color: #fde600;
+	overflow: auto;
+}
+
+.why-admavin .box-header{
+	min-height : 75px;
+}
+
+.card-title {
+	color: #3f6b9e;
+	font-weight: 500;
+	font-size: 26px;
+}
+
+.card-text {
+	font-size: 19px;
+	color: #3f6b9e;
+}
+
+.girl-image {
+	width: 80px;
+	left: -75px;
+	top: -90px;
+}
+
+.btn {
+	background-color: #ffbf4c;
+	font-size: 12px;
+}
+
+.no-pointer {
+	pointer-events: none
+}
+
+@media ( max-width : 450px) {
+	.choose-admavin-section {
+		margin-top: 0px !important;
+	}
+	.girl-image {
+		display: none;
+	}
+}
+
+/*-------------meetTheTeam-------------------*/
+.meet-the-team {
+	background-color: #f5bb4d;
+	height: 100%;
+	padding: 2%;
+}
+
+.meet-the-team .text {
+	font-size: 20px;
+}
+
+.meet-the-team .sub-title {
+	font-size: 23px;
+}
+
+.meet-the-team-img {
+	height: 500px;
+	object-fit: cover;
+	border-radius: 50px;
+}
+
+.meet-the-team-bg {
+	background: url("../pages/assets/meet-the-team/admavinTeam.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	height: 850px;
+	position: relative;
+}
+
+.team-values-1 {
+	position: absolute;
+	right: 0px;
+}
+
+.team-values-2 {
+	position: absolute;
+	right: 0px;
+	top: 140px
+}
+
+.team-values-3 {
+	position: absolute;
+	right: 0px;
+	bottom: 130px
+}
+
+@media ( max-width : 600px) {
+	.meet-the-team-img {
+		height: 260px;
+		border-radius: 45px;
+	}
+}
+
+/*-------------footer-------------------*/
+.footer-section {
+	background-color: #545454;
+	height: 100%;
+	padding: 2%;
+	padding-top: 0px;
+	line-height: 1.6;
+}
+
+/*-------------------------------------- outer pages ---------------------------------*/
+body {
+	min-height: 100vh;
+	min-width: 1600px;
+	overflow-x: auto;
+}
+
+.page-content {
+	padding: 30px 30px;
+	background: #03989e;
+}
+
+.panel {
+	position: relative;
+	background-color: #fff;
+	border: 0 solid transparent;
+	border-radius: 0.286rem;
+	box-shadow: 0 1px 1px rgb(0 0 0/ 5%);
+}
+
+.panel-heading {
+	border-top-left-radius: 0.214rem;
+	border-top-right-radius: 0.214rem;
+	position: relative;
+	border-bottom: 1px solid transparent;
+}
+
+.panel-body {
+	padding-left: 250px;
+	padding-right: 250px;
+}
+
+.page-title {
+	margin-top: 0;
+	margin-bottom: 0;
+	font-size: 30px;
+}
+
+.img-cont {
+	background-color: transparent;
+	position: relative;
+	overflow: hidden;
+}
+
+.img-cont img {
+	max-width: 100% !important;
+	max-height: 100% !important;
+	margin: 0 auto;
+	margin-bottom: 8px;
+}
+
+.img-bordered {
+	border: 2px solid #999;
+}
+
+.spacing {
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+.spacing-lg {
+	padding-top: 14px;
+	padding-bottom: 14px;
+}
+
+/*------------------------------------- Offering - Outer Pages ------------------------------------*/
+.module-header {
+	background-color: #03989E;
+	height: 200px;
+}
+
+.module-header {
+	font-size: 80px;
+}
+
+.admavin-logo-offerings {
+	position: absolute;
+	top: 0;
+	right: 25px;
+}
+
+.clock-img {
+	height: 40px;
+	width: 40px;
+}
+
+.net-design-img-left {
+	transform: rotate(270deg);
+	position: absolute;
+	height: 525px;
+	width: 480px;
+	top: -20px;
+	left: -10px;
+}
+
+.excel-sheet-img {
+	position: absolute;
+	height: 70px;
+	top: 130px;
+	right: 110px;
+}
+
+.analyser-desktop-cont {
+	margin-left: 570px;
+}
+
+.analyser-desktop-img {
+	height: 500px;
+}
+
+.analyser-arrow-img {
+	position: absolute;
+	top: 330px;
+	left: 480px;
+}
+
+.city-summary-page {
+	width: 100%;
+	height: 1140px;
+}
+
+.media-detail-page {
+	width: 100%;
+	height: 1140px;;
+}
+
+.city-report-text {
+	position: absolute;
+	right: 15px;
+	top: 245px;
+}
+
+.site-report-text {
+	position: absolute;
+	right: 40px;
+	top: 600px;
+}
+
+.footer-man-img {
+	position: absolute;
+	bottom: 5px;
+	left: 45px;
+	height: 400px;
+}
+
+.footer-woman-img {
+	position: absolute;
+	bottom: 5px;
+	right: 45px;
+	height: 400px;
+}
+
+.footer-text {
+	position: absolute;
+	bottom: 0;
+	left: 22%;
+}
+
+.excel-sheet-img {
+	position: absolute;
+	height: 70px;
+	top: 130px;
+	right: 145px;
+}
+
+.analyser-girl-img {
+	transform: scaleX(-1);
+	height: 330px;
+}
+
+.planner-desktop-cont {
+	margin-left: 570px;
+}
+
+.monitoring-scooter {
+	margin-left: 250px;
+}
+
+.scooter-drive-img {
+	height: 470px;
+	width: 590px;
+}
+
+.inside-mobile-map-img {
+	height: 470px;
+	z-index: 1;
+}
+
+.inside-mobile-media-img {
+	height: 470px;
+	padding-left: 110px;
+	z-index: 1;
+}
+
+.monitoring-task-img {
+	width: 100%;
+	padding-left: 30px;
+}
+
+.yellow-girl-sitting-img {
+	height: 400px;
+	position: absolute;
+	right: 60px;
+	bottom: 0;
+}
+
+.analyser-arrow-img {
+	position: absolute;
+	top: 330px;
+	left: 360px;
+}
+
+.planner-heatmap {
+	width: 100%;
+	height: 706px;
+}
+
+.banks-text {
+	position: absolute;
+	left: 325px;
+	top: 260px;
+}
+
+.grocery-shops-text {
+	position: absolute;
+	right: 70px;
+	top: 250px;
+}
+
+.media-sites-text {
+	position: absolute;
+	right: 500px;
+	top: 395px;
+}
+
+.footer-pink-girl-img {
+	position: absolute;
+	bottom: 5px;
+	right: 45px;
+	height: 400px;
+}
+
+.net-design-img-right {
+	transform: rotate(0deg);
+	position: absolute;
+	height: 560px;
+	width: 490px;
+	top: 0px;
+	right: 0px;
+}
+
+.analyser-left-panel {
+	position: absolute;
+	top: 100px;
+	left: 70px;
+}
+
+.excel-sheet-img {
+	position: absolute;
+	height: 70px;
+	top: 130px;
+	right: 148px;
+}
+
+.planner-desktop-cont {
+	margin-left: 570px;
+}
+
+.planner-desktop-img {
+	height: 500px;
+}
+
+.analyser-arrow-img {
+	position: absolute;
+	top: 330px;
+	left: 480px;
+}
+
+.planner-heatmap {
+	width: 100%;
+	height: 706px;
+}
+
+.banks-text {
+	position: absolute;
+	left: 325px;
+	top: 260px;
+}
+
+.grocery-shops-text {
+	position: absolute;
+	right: 70px;
+	top: 250px;
+}
+
+.media-sites-text {
+	position: absolute;
+	right: 500px;
+	top: 395px;
+}
+
+.footer-pink-girl-img {
+	position: absolute;
+	bottom: 5px;
+	right: 45px;
+	height: 400px;
+}
+
+.campaign-analyser-bg {
+	background:
+		url("../pages/assets/offering-page/Screenshot_camp_analyzer.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 750px;
+	/*   position:relative; */
+}

@@ -1,0 +1,99 @@
+.module-header {
+  background-color: #03989E;
+  height: 200px;
+}
+
+.module-header {
+  font-size: 80px;
+}
+
+.admavin-logo {
+  position: absolute;
+  top: 0;
+  right: 25px;
+}
+
+.clock-img {
+  height: 40px;
+  width: 40px;
+}
+
+.net-design-img-left {
+  transform: rotate(270deg);
+  position: absolute;
+  height: 525px;
+  width: 480px;
+  top: -20px;
+  left: -10px;
+}
+
+.net-design-img-right {
+  transform: rotate(0deg);
+  position: absolute;
+  height: 560px;
+  width: 490px;
+  top: 0px;
+  right: 0px;
+}
+
+.analyser-left-panel {
+  position: absolute;
+  top: 100px;
+  left: 70px;
+}
+
+.excel-sheet-img {
+  position: absolute;
+  height: 70px;
+  top: 130px;
+  right: 137px;
+}
+
+.analyser-girl-img {
+  transform: scaleX(-1);
+  height: 330px;
+}
+
+.planner-desktop-cont {
+  margin-left: 570px;
+}
+
+.planner-desktop-img {
+  height: 500px;
+}
+
+.analyser-arrow-img {
+  position: absolute;
+  top: 330px;
+  left: 480px;
+}
+
+.planner-heatmap {
+  width: 100%;
+  height: 706px;
+}
+
+.banks-text {
+  position: absolute;
+  left: 325px;
+  top: 260px;
+}
+
+.grocery-shops-text {
+  position: absolute;
+  right: 70px;
+  top: 250px;
+}
+
+.media-sites-text {
+  position: absolute;
+  right: 500px;
+  top: 395px;
+}
+
+.footer-pink-girl-img {
+  position: absolute;
+  bottom: 5px;
+  right: 45px;
+  height: 400px;
+}

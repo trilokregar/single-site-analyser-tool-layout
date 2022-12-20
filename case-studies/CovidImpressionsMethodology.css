@@ -1,0 +1,56 @@
+body {
+    background: #0db59b;
+    min-height: 100vh;
+}
+
+.page-content {
+    padding: 30px 30px;
+}
+
+.panel {
+    position: relative;
+    background-color: #fff;
+    border: 0 solid transparent;
+    border-radius: 0.286rem;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
+}
+
+.panel-heading {
+    border-top-left-radius: 0.214rem;
+    border-top-right-radius: 0.214rem;
+    position: relative;
+    border-bottom: 1px solid transparent;
+}
+
+.page-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 30px;
+}
+
+.img-cont {
+    background-color: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.img-cont img {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    margin: 0 auto;
+    margin-bottom: 8px;
+}
+
+.img-bordered {
+    border: 2px solid #999;
+}
+
+.spacing {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.spacing-lg {
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
