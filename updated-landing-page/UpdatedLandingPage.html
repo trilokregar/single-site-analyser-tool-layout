@@ -38,11 +38,6 @@
     <!-- Font-awesome -->
     <link
       rel="stylesheet"
-      type="text/css"
-      href="/themes/libs/fontawesome/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
       integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
       crossorigin="anonymous"
@@ -60,12 +55,25 @@
     <!-- External JS -->
     <script type="text/javascript" src="./SiteAnalyserFunctions.js"></script>
     <script type="text/javascript" src="./TargetGroupsList.js"></script>
+    <script type="text/javascript" src="./PoiMarkers.js"></script>
+    <script type="text/javascript" src="./MarkersConstants.js"></script>
+    <script type="text/javascript" src="./PointOfInterestList.js"></script>
     
     <!-- jquery -->
     <script src="./jquery.js"></script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script> -->
+
+    <!-- Leaflet style and js -->
+    <!-- <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script> -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.3/leaflet.js"></script>
+    
+    <!-- Leaflet-Heatmap js -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/heatmap.js/2.0.0/heatmap.js"></script>
+    <script type="text/javascript" src="./leaflet-heatmap.js"></script>
+
 
     <title>Updated Landing Page</title>
   </head>
@@ -105,6 +113,7 @@
       <div id="map" class="mx-4 rounded-lg border map-height">
         <!-- Location-Search, Lat-Lng and Influence-Radius -->
         <div class="d-flex map-action-inputs stop-propagation">
+          <!-- Location-search -->
           <div class="col-5 p-0 mr-3">
             <i class="fa fa-search search-icon"></i>
             <input
@@ -142,7 +151,7 @@
           />
 
           <!-- radius of influence -->
-          <div class="form-group col-3 p-0 shadow-none">
+          <div class="form-group col-3 p-0 mb-0 shadow-none">
             <select
               id="radius-options"
               class="form-control shadow-none"
@@ -159,27 +168,131 @@
         </div>
 
         <!-- TG and POI Tab Buttons -->
-        <div class="map-action-tabs d-none">
-          <!-- Target-Group -->
+        <div class="map-action-tabs">
           <div
-            class="map-tab border mb-3 rounded-lg bg-white stop-propagation"
-            data-toggle="modal"
-            data-target="#tgModal"
+            id="tg-tab-button"
+            class="map-tab border rounded-lg mb-3 stop-propagation"
+            style="background-color: white;"
           >
             <i class="fa fa-users my-1 fa-size"></i>
             <p class="mb-0">Target Group</p>
           </div>
-
-          <!-- Poin Of Interest -->
           <div
-            class="map-tab border rounded-lg bg-white stop-propagation"
-            data-toggle="modal"
-            data-target="#poiModal"
+            id="poi-tab-button"
+            class="map-tab border rounded-lg mb-3 stop-propagation"
+            style="background-color: white;"
           >
             <i class="fa fa-compass my-1 fa-size"></i>
             <p class="mb-0">Point Of Interest</p>
           </div>
         </div>
+
+        <!-- Tg-Tab Content -->
+        <div id="tg-tab-content" class="map-tab-content border rounded-lg bg-white stop-propagation p-3" style="display:none;">
+          <!-------------- Header ----------->
+          <span class="mb-0 h4">Target Groups</span>
+          <hr class="my-2" />
+
+          <!--------------- Body ------------>
+          <!-- Selectables -->
+          <div id="tg-list"></div>
+          <!-- Un-Selectables -->
+          <div id="un-selectable-tg-list">
+            <div class="d-flex justify-content-between align-items-center my-1">
+              <p class="mb-0">Mothers</p>
+              <button
+                class="btn py-1 px-3 shadow-none add-button stop-propagation"
+                data-toggle="modal"
+                data-target="#un-selectable-tg-modal"
+              >
+                Select
+              </button>
+            </div>
+            <hr class="my-0" />
+            <div class="d-flex justify-content-between align-items-center my-1">
+              <p class="mb-0">Working Females</p>
+              <button
+                class="btn py-1 px-3 shadow-none add-button stop-propagation"
+                data-toggle="modal"
+                data-target="#un-selectable-tg-modal"
+              >
+                Select
+              </button>
+            </div>
+            <hr class="my-0" />
+            <div class="d-flex justify-content-between align-items-center my-1">
+              <p class="mb-0">Working Males</p>
+              <button
+                class="btn py-1 px-3 shadow-none add-button stop-propagation"
+                data-toggle="modal"
+                data-target="#un-selectable-tg-modal"
+              >
+                Select
+              </button>
+            </div>
+            <hr class="my-0" />
+            <div class="d-flex justify-content-between align-items-center my-1">
+              <p class="mb-0">Female Youth</p>
+              <button
+                class="btn py-1 px-3 shadow-none add-button stop-propagation"
+                data-toggle="modal"
+                data-target="#un-selectable-tg-modal"
+              >
+                Select
+              </button>
+            </div>
+            <hr class="my-0" />
+            <div class="d-flex justify-content-between align-items-center my-1">
+              <p class="mb-0">Male Youth</p>
+              <button
+                class="btn py-1 px-3 shadow-none add-button stop-propagation"
+                data-toggle="modal"
+                data-target="#un-selectable-tg-modal"
+              >
+                Select
+              </button>
+            </div>
+            <hr class="my-0" />
+            <div class="d-flex justify-content-between align-items-center my-1">
+              <p class="mb-0">Luxury Car Owners</p>
+              <button
+                class="btn py-1 px-3 shadow-none add-button stop-propagation"
+                data-toggle="modal"
+                data-target="#un-selectable-tg-modal"
+              >
+                Select
+              </button>
+            </div>
+            <hr class="my-0" />
+            <div class="d-flex justify-content-between align-items-center my-1">
+              <p class="mb-0">Luxury Apartment Owners</p>
+              <button
+                class="btn py-1 px-3 shadow-none add-button stop-propagation"
+                data-toggle="modal"
+                data-target="#un-selectable-tg-modal"
+              >
+                Select
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Poi-Tab Content -->
+        <div id="poi-tab-content" class="map-tab-content border rounded-lg bg-white stop-propagation p-3" style="display:none;">
+            <!------------ Header ---------->
+            <span class="mb-0 h4">Point Of Interest</span>
+            <hr class="my-2" />
+
+            <!------------- Body ----------->
+            <div class="d-flex">
+              <div class="col-6 pl-0 border-right">
+                <div class="nav flex-column" id="poi-groups-list" role="tablist" aria-orientation="vertical"></div>
+              </div>
+              <div class="col-6 pr-0">
+                <div class="tab-content" id="pois-list"></div>
+              </div>
+            </div>
+          </div>
 
         <!-- (Generate Report / Download-sample-report) Button -->
         <div class="map-action-generate-report">
@@ -327,110 +440,6 @@
         </div>
       </div>
 
-      <!--TG Modal -->
-      <div class="modal fade" id="tgModal" data-backdrop="static">
-        <div
-          class="modal-dialog modal-lg modal-dialog-centered"
-          role="document"
-        >
-          <div class="modal-content">
-            <!-- Header -->
-            <div class="modal-header">
-              <h5 class="modal-title">Target Groups</h5>
-            </div>
-
-            <!-- Body TG List -->
-            <div class="modal-body">
-              <div id="tg-list"></div>
-            </div>
-
-            <!-- Footer -->
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary bg-secondary"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
-              <button
-                type="button"
-                class="btn btn-primary bg-primary"
-                data-dismiss="modal"
-              >
-                Submit
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!--POI Modal -->
-      <div class="modal fade" id="poiModal" data-backdrop="static">
-        <div
-          class="modal-dialog modal-lg modal-dialog-centered"
-          role="document"
-        >
-          <div class="modal-content">
-            <!-- Header -->
-            <div class="modal-header">
-              <h5 class="modal-title">Point Of Interest</h5>
-            </div>
-
-            <!-- Body -->
-            <div class="modal-body">
-              <div class="bg-dark px-3 rounded-lg">
-                <p class="text-white">
-                  You can only select 3 POI's without subscription. <br />
-                  With subsrciption, you can unlock full and able to select all
-                  the POI's.
-                </p>
-              </div>
-              <hr class="divider" />
-              <!-- TG List -->
-              <div class="d-flex justify-content-between my-1">
-                <p class="mb-0">Bank</p>
-                <div>
-                  <button class="btn py-1 px-3">Select</button>
-                </div>
-              </div>
-              <hr class="my-0" />
-              <div class="d-flex justify-content-between my-1">
-                <p class="mb-0">ATM</p>
-                <div>
-                  <button class="btn py-1 px-3">Select</button>
-                </div>
-              </div>
-              <hr class="my-0" />
-              <div class="d-flex justify-content-between my-1">
-                <p class="mb-0">Schools</p>
-                <div>
-                  <button class="btn py-1 px-3">Select</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Footer -->
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary bg-secondary"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
-              <button
-                type="button"
-                class="btn btn-primary bg-primary"
-                data-dismiss="modal"
-              >
-                Submit
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- Generate Report Modal -->
       <div class="modal fade" id="generate-report-modal" data-backdrop="static">
         <div
@@ -532,50 +541,136 @@
           </div>
         </div>
       </div>
+
+      <!-- Un-Selectable Target-Group Message Modal -->
+      <div class="modal fade" id="un-selectable-tg-modal" data-backdrop="static">
+        <div class="modal-dialog mt-1" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <p class="font-weight-bold mb-0">Sorry, you can't select other Target Group except
+                <span class="text-danger">Top Three.</span>
+                  <br />
+                  To unlock it's full potential, take
+                <a
+                  href="https://calendly.com/atul-singh-4/30min"
+                  class="text-success"
+                  target="_blank"
+                >
+                  Full Subscription.
+                  <img
+                    src="../assets/landing-page/hyperlink-img.png"
+                    class="mb-1"
+                    height="15"
+                  />
+                </a>
+              </p>
+            </div>
+            <div class="modal-body d-flex justify-content-end">
+              <button type="button" class="btn font-weight-bold shadow-none" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- "Can't Select More than 3 POI" Message Modal -->
+      <div class="modal fade" id="poi-limit-msg-modal" data-backdrop="static">
+        <div class="modal-dialog mt-1" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <p class="font-weight-bold mb-0">Sorry, you can't add more than
+                <span class="text-danger">Three POI's.</span>
+                  <br />
+                  To unlock it's full potential, take
+                <span class="text-success">
+                  <a
+                    href="https://calendly.com/atul-singh-4/30min"
+                    class="text-success"
+                    target="_blank"
+                  >
+                    Full Subscription.
+                    <img
+                      src="../assets/landing-page/hyperlink-img.png"
+                      class="mb-1"
+                      height="15"
+                    />
+                  </a>
+                </span>
+              </p>
+            </div>
+            <div class="modal-body d-flex justify-content-end">
+              <button type="button" class="btn font-weight-bold shadow-none" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!--------------------- SCRIPT ---------------------->
+    <!--------------------- SCRIPTS ---------------------->
     <script>
       // ------------- Global Variables Declaration ------------------- //
       // Initials
       var latitude = 28.661335;
       var longitude = 77.215618;
-      var initialZoom = 9;
+      var initialZoom = 11;
       var initialBounds;
       
       // Scrollables
       var scrollZoom;
       var scrollBounds;
       
-      // Others
-      var searchedPlaceName = "";
-      var existingMarker;
-
       // TG
       var selectedTgId = "";
       var selectedTgName = "";
       var selectedTgResultingPoiLayers = [];
+      var allHeatMapPointsArr = [];
+      var existingHeatmap;
+
+      // POI
+      var poiSelectionLoading = false;
+      var selectedPoiName = "";
+      var selectedPoiGroupName = "";
+      var finalSelectedPoisInfo = {};
+      var poisMarkerMap = {};
+      var poiMarkers = [];
+
+      // Others
+      var searchedPlaceName = "";
+      var existingMarker;
+      var selectedTab = 0;
+
 
       // jquery variables (which are used OneTime OR more than "Once")
       const $universalSelection = $("*");
+      // All ID's
       const $latitude = $("#latitude");
       const $longitude = $("#longitude");
+      const $radiusOptions = $('#radius-options');
       const $placesAutocomplete = $("#places-autocomplete");
+
       const $contentForSubmission = $("#content-for-submission");
       const $contentForSuccess = $("#content-for-success");
       const $contentForFailure = $("#content-for-failure");
       const $invalidEmailMessage = $("#invalid-email-message");
       const $generateReportEmailInput = $("#gen-rep-email-input");
       const $generateReportPrivacyCheck = $("#gen-rep-privacy-check");
-      const $radiusOptions = $('#radius-options');
-      const $targetGroupsList = $("#tg-list");
       const $sampleReportDownloadBtn = $("#sample-report-btn");
+
       const $generateReportModal = $('#generate-report-modal');
+      
+      const $tgTabButton = $("#tg-tab-button");
+      const $poiTabButton = $("#poi-tab-button");
+      const $tgTabContent = $("#tg-tab-content");
+      const $poiTabContent = $("#poi-tab-content");
+      const $targetGroupsList = $("#tg-list");
+      const $poisGroupList = $("#poi-groups-list");
+      const $poisList = $(`#pois-list`);
+      
+      // All CLASSES
       const $cls_stopPropagation = $(".stop-propagation");
 
       
       /// --------------------- MAP JS START ------------------------- ///
-      const map = L.map("map", { maxZoom: 18, minZoom: 3 })
+      const map = L.map("map", { maxZoom: 18, minZoom: 10 })
       _setMapView(latitude, longitude, initialZoom);
       
       // fixing position of "zoomControl"
@@ -637,7 +732,7 @@
             _removeMarker(existingMarker);
 
             // add new marker
-            _addMarkerWithPopup(searchedLatitude, searchedLongitude);
+            _addMarkerWithPopup(searchedLatitude, searchedLongitude, blueIcon);
           }
         );
       }
@@ -669,56 +764,256 @@
 
         // add new marker
         if (inputLat && inputLng) {
-          _addMarkerWithPopup(inputLat, inputLng);
+          _addMarkerWithPopup(inputLat, inputLng, blueIcon);
 
           // Setting MapView
           _setMapView(inputLat, inputLng, zoomLvl);
         }
       }
 
-      /// ------------ MAPPING TG LIST ------------------ ///
-      TargetGroupList.map((targetGroup, index) => {
-        const { id: tgId, name: tgName, resultLayers } = targetGroup;
-        const resPoiLayers = resultLayers.map((eachLayer) => eachLayer.poiTypeId);
+      /// ---------------- TG-TAB CLICK ---------------- ///
+      $tgTabButton.on("click", function() {
+        if (selectedTab === 1) {
+          $tgTabButton.css("background-color", "white");
+          $tgTabContent.css("display", "none");
+          $poiTabContent.css("display", "none");
+          selectedTab = 0;
+          return;
+        }
+        selectedTab = 1;
+        $tgTabContent.css("display", "block");
+        $poiTabContent.css("display", "none");
+        $tgTabButton.css("background-color", "lightgray");
+        $poiTabButton.css("background-color", "white");
+      });
+
+      /// ---------------- POI-TAB CLICK ---------------- ///
+      $poiTabButton.on("click", function() {
+        if (selectedTab === 2) {
+          $poiTabButton.css("background-color", "white");
+          $poiTabContent.css("display", "none");
+          $tgTabContent.css("display", "none");
+          selectedTab = 0;
+          return;
+        }
+        selectedTab = 2;
+        $poiTabContent.css("display", "block");
+        $tgTabContent.css("display", "none");
+        $poiTabButton.css("background-color", "lightgray");
+        $tgTabButton.css("background-color", "white");
+      });
+
+      /// --------------------- TG LIST MAPPING (selectable) ------------------------ ///
+      TargetGroupsList.map((targetGroup) => {
+        const { id, name: tgName } = targetGroup;
 
         // Appending "All-Target-Groups" inside Div
         $targetGroupsList.append(
-          `<div class="d-flex justify-content-between my-1" id=${index}>
-            <p class="mb-0">${tgName}</p>
+          `<div class="d-flex justify-content-between align-items-center my-1">
+            <p class="mb-0 font-weight-bold">${tgName}</p>
             <div class="d-flex">
+              <div id="spinner-${id}"></div>
               <button
-                id=${tgId}
-                class="btn py-1 px-3"
+                data-tg-id="${id}"
+                class="btn py-1 px-3 shadow-none add-button btn-tg-select"
               >
-                <span id="tg-select-text">Select</span>
+                Select
             </button>
             </div>
           </div>
           <hr class="my-0" />`
         );
-
-        // capture specific Tg and Trigger Selection
-        $(`#${tgId}`).on("click", function () {
-          selectedTgId = tgId;
-          selectedTgName = tgName;
-          selectedTgResultingPoiLayers = resPoiLayers;
-
-          const existingselectTgText = $(`#${tgId}`).find("#tg-select-text").text();
-
-          if (existingselectTgText === "Select") {
-            $(`#${tgId}`).find("#tg-select-text").text("Selected");
-          } else {
-            $(`#${tgId}`).find("#tg-select-text").text("Select");
-          }
-        });
       });
 
-      /// --------- DOWNLOAD SAMPLE REPORT -------------- ///
-      $sampleReportDownloadBtn.click(function (e) {
+      /// ------------------------- SELECT TARGET GROUP --------------------------- ///
+      const $tgSelectButton = $(".btn-tg-select");
+      $tgSelectButton.on('click', function(){
+        const $tgBtn = $(this);
+        // get tgId
+        const { tgId } = $tgBtn.data();
+
+        // if same tg selected then do nothing else call API
+        if (selectedTgId === tgId) {
+          return;
+        } else {
+          const {name, resultLayers } = TargetGroupsList.find((eachTg) => eachTg.id === tgId);
+
+          // updating Variables
+          selectedTgId = tgId;
+          selectedTgName = name;
+
+          // getting all "resultingPoiLayerIds"
+          const resPoiLayers = resultLayers.map((eachLayer) => eachLayer.poiTypeId);
+          selectedTgResultingPoiLayers = resPoiLayers;
+
+          // Clear other selected (CSS)
+          $tgSelectButton.removeClass('selected').text('Select');
+          // Change the colour and text of the current button
+          $tgBtn.addClass('selected').text('Selected');
+
+          // Setting "Loading = true" for Tg-Selection
+          $(`#spinner-${selectedTgId}`).html(_spinner("spinner-border-sm mx-1 mt-1"));
+
+          // Bounds and BBox
+          const finalBounds = scrollBounds ?? initialBounds;
+          const bbox = _getBBoxFromBounds(finalBounds);
+          
+          // remove "Previous heatmap"
+          existingHeatmap && _removeHeatMap(existingHeatmap);
+
+          // add "New Heatmap"
+          _showHeatMap(resPoiLayers, bbox);
+        }
+      });
+
+      /// ------------------------------- POIS LIST MAPPING ------------------------- ///
+      PointOfInterestList.map((eachPoiGroup) => {
+        const {id: poiGroupId, name: poiGroupName} = eachPoiGroup;
+
+        // Appending "All-Pois-Groups" inside Div
+        $poisGroupList.append(
+          `<div 
+            class="d-flex justify-content-between align-items-center rounded-lg p-2"
+            href="#${poiGroupId}"
+          >
+            <span class="cursor-pointer">${poiGroupName}</span>
+            <span class="d-flex align-items-center">
+              <label id="selected-pois-count-${poiGroupId}" class="mb-0"></label>
+              <i class="fa fa-angle-right pl-3 cursor-pointer font-weight-bold"></i>
+            </span>
+           </div>`
+        );
+
+        // create a new "Div" and "append" all "pois" 
+        var newDiv = $("<div>", {id: `${poiGroupId}`, "class": "tab-pane fade"});
+        $poisList.append(newDiv);
+        
+        const $poiListDiv = $(`#${poiGroupId}`);
+        // adding "Title" for "Pois-Listing"
+        $poiListDiv.append(`<span class="h5 mb-0 text-truncate">${poiGroupName}</span><hr class="my-2" />`);
+        
+        // Appending "All-Pois" of specific "Poi-Group" inside div
+        eachPoiGroup.childrens.map((eachPoiName) => {
+          // creating ID from name(has space between & spcl char) (for Loader)
+          const eachPoiNameId = eachPoiName.replace(/[^\w ]/g, '').split(" ").join("-");
+
+          // appending "all-pois"
+          $poiListDiv.append(
+            `<div class="d-flex justify-content-between align-items-center p-1">
+              <span>${eachPoiName}</span>
+              <div class="d-flex">
+                <div id="spinner-${eachPoiNameId}"></div>
+                <button
+                  data-poi-name="${eachPoiName}"
+                  data-poi-group-name="${poiGroupName}"
+                  data-poi-group-id="${poiGroupId}"
+                  class="btn shadow-none add-button btn-poi-select"
+                >
+                  Add
+                </button>
+              </div>
+             </div>`
+          )
+        })
+      });
+
+      /// Enable tabbable tabs via JavaScript (each tab needs to be activated individually)
+      $('#poi-groups-list div').on('click', function (e) {
         e.preventDefault();
+        $(this).tab('show');
+      })
+
+      /// ------------------------- SELECT POI GROUP --------------------------- ///
+      const $poiSelectButton = $(".btn-poi-select");
+      $poiSelectButton.on('click', function(){
+        const $poiBtn = $(this);
+        // get poiGroupName and poiName
+        const { poiGroupName, poiGroupId, poiName } = $poiBtn.data();
+          
+        // updating Variables
+        selectedPoiName = poiName;
+        selectedPoiGroupName = poiGroupName;
+
+        // getting "Total Selected Poi Counts"
+        const totalSelectedPoiCount = Object.keys(finalSelectedPoisInfo).reduce((acc, poiGroupKey) => 
+          acc + finalSelectedPoisInfo[poiGroupKey].length, 0);
+          
+        // if SAME-POI selected
+        if ($poiBtn.text() === "Added") {
+          // Change the colour and text of the current button
+          $poiBtn.removeClass('selected').text('Add');
+          
+          // updating "finalSelectedPoisInfo" for final submission (generate-report)
+          Object.keys(finalSelectedPoisInfo).map((poiGroupKey) => {
+            // key to check if already "poiName" exist or not in "poiGroups"
+            const isPoiNameExist = finalSelectedPoisInfo[poiGroupKey].includes(poiName);
+            
+            // removed selected poi
+            if (isPoiNameExist) {
+              const newpoiGroupArr = finalSelectedPoisInfo[poiGroupKey].filter((eachPoi) => eachPoi !== poiName);
+              finalSelectedPoisInfo[poiGroupKey] = newpoiGroupArr;
+            }
+            
+            // deleting the key from "finalSelectedPoisInfo" if there is "No-selected-pois" in "Group".
+            if (finalSelectedPoisInfo[poiGroupKey].length === 0) {
+              delete finalSelectedPoisInfo[poiGroupKey];
+            }
+
+            // setting selected poi-counts for poi-groups
+            const selectedPoiCount = finalSelectedPoisInfo[poiGroupName]?.length || 0;
+            $(`#selected-pois-count-${poiGroupId}`).text(selectedPoiCount === 0 ? "" : selectedPoiCount);
+          });
+
+          // remove corresponding poi-markers
+          if (Object.keys(poisMarkerMap).includes(poiName)) {
+            poisMarkerMap[poiName].forEach((exMarker) => {
+              _removeMarker(exMarker);
+            });
+
+            // after removing markers, remove the "key" also from "poisMarkerMap"
+            delete poisMarkerMap[poiName];
+          };
+          
+        } else if (totalSelectedPoiCount >= 3) {
+          // if user "SELECT MORE THAN 3 POI's" then show popup
+          $(`#poi-limit-msg-modal`).modal("show");
+
+        } else {
+          // Change the colour and text of the current button
+          $poiBtn.addClass('selected').text('Added');
+
+          // Bounds and BBox
+          const finalBounds = scrollBounds ?? initialBounds;
+          const bbox = _getBBoxFromBounds(finalBounds);
+
+          // Setting "Loading = true" for POI-Selection
+          const poiNameId = poiName.replace(/[^\w ]/g, '').split(" ").join("-"); // creating ID from name(has space between & spcl char)
+          $(`#spinner-${poiNameId}`).html(_spinner("spinner-border-sm mx-1 mt-1"));
+
+          // calling API to get pois-locations
+          _getPoiMarkers(bbox, poiName, poiGroupName, poisMarkerMap);
+
+          // key to check if already "poiGroupName" exist or not in "finalSelectedPoisInfo"
+          const isPoiGroupNameExist = Object.keys(finalSelectedPoisInfo).includes(selectedPoiGroupName);
+
+          // adding poiGroups and Pois to "finalSelectedPoisInfo"
+          if (!isPoiGroupNameExist) {
+            finalSelectedPoisInfo[poiGroupName] = [poiName];
+          } else {
+            finalSelectedPoisInfo[poiGroupName].push(poiName);
+          }
+
+          // setting selected poi-counts for poi-groups
+          const selectedPoiCount = finalSelectedPoisInfo[poiGroupName].length || 0;
+          $(`#selected-pois-count-${poiGroupId}`).text(selectedPoiCount === 0 ? "" : selectedPoiCount);
+        }
+      });
+
+      /// --------------------------- DOWNLOAD SAMPLE REPORT ------------------------ ///
+      $sampleReportDownloadBtn.click(function (e) {
         $.ajax({
           type: "GET",
-          url: "https://staging.admavin.com/api/v3/report/single_site/sample",
+          url: "https://app.staging.admavin.com/api/v3/report/single_site/sample",
           dataType: "json",
           success: function (result) {
             alert("success");
@@ -750,14 +1045,13 @@
 
             // TargetGroupInfo Object
             const targetGroupInfoObject = {};
-            targetGroupInfoObject[selectedTgName] = selectedTgResultingPoiLayers;
-
+            if (selectedTgName) {
+              targetGroupInfoObject[selectedTgName] = selectedTgResultingPoiLayers;
+            }
+            
             // POI info Object
-            const poiInfoObject = {
-              "bank": ["Citibank", "Kotak"],
-              "jewelry": ["Fossil"]
-            };
-
+            const poiInfoObject = finalSelectedPoisInfo;
+            
             // Constructing Bean
             const reportBean = {
               "latitude": inputLat,
@@ -770,21 +1064,23 @@
               "emailId": emailId,
               "locationName": locationName,
             };
-
+            console.log("reportBean=", reportBean);
+            
             // if email is valid then generating report
             $.ajax({
               type: "POST",
-              url: "https://staging.admavin.com/api/v3/report/single_site/pdf",
+              url: "https://app.staging.admavin.com/api/v3/report/single_site/pdf",
               body: reportBean,
               success: function (result) {
                 $contentForSubmission.css("display", "none");
                 $contentForSuccess.css("display", "block");
                 $contentForFailure.css("display", "none");
               },
-              error: function (result) {
+              error: function (error) {
                 $contentForSubmission.css("display", "none");
                 $contentForSuccess.css("display", "none");
                 $contentForFailure.css("display", "block");
+                alert(error);
               },
             });
             return true;
@@ -811,6 +1107,11 @@
 
         // NOTE :: for Modals(popup) we have to again open modal with there individual Id.
         $($(this).attr("data-target")).modal('show');
+      })
+
+       /// -------- STOP PROPAGATION (mousescroll) ------ ////
+       $cls_stopPropagation.on('mousewheel', function(e){
+        e.stopPropagation();
       })
 
       // "DOUBLE-CLICK-IGNORE" to all-Elements.
